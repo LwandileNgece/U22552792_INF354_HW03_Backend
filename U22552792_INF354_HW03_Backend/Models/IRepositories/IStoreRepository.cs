@@ -5,5 +5,6 @@
         Task<Product[]> GetAllProductsAsync();
         Task<Brand[]> GetAllBrandsAsync();
         Task<ProductType[]> GetAllProductTypesAsync();
+        Task<Product> AddProductAsync(Product product);
     }
 }

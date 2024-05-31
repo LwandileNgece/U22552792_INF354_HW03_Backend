@@ -26,5 +26,18 @@ namespace U22552792_INF354_HW03_Backend.Models.Repositories
             IQueryable<ProductType> query = _appDbContext.ProductTypes;
             return await query.ToArrayAsync();
         }
+        public async Task<Product> AddProductAsync(Product product)
+        {
+            try
+            {
+                _appDbContext.Products.Add(product);
+                await _appDbContext.SaveChangesAsync();
+                return product;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error adding product to the database", ex);
+            }
+        }
     }
 }
