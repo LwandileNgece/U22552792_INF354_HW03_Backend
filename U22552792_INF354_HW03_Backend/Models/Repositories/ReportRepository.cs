@@ -49,15 +49,15 @@ namespace U22552792_INF354_HW03_Backend.Models.Repositories
                 .ToListAsync();
 
             var groupedData = activeProducts
-                .GroupBy(p => p.ProductType.Name)
+                .GroupBy(p => p.Brand.Name)
                 .Select(g => new ActiveProductsReportDTO
                 {
-                    ProductType = g.Key,
-                    Brands = g.GroupBy(p => p.Brand.Name)
-                              .Select(b => new BrandWithProductsDTO
+                    Brand = g.Key,
+                    ProductTypes = g.GroupBy(p => p.ProductType.Name)
+                              .Select(pt => new ProductTypeWithProductsDTO
                               {
-                                  Brand = b.Key,
-                                  Products = b.Select(p => new ProductDTO
+                                  ProductType = pt.Key,
+                                  Products = pt.Select(p => new ProductDTO
                                   {
                                       Name = p.Name,
                                       Description = p.Description,
@@ -69,5 +69,6 @@ namespace U22552792_INF354_HW03_Backend.Models.Repositories
 
             return groupedData;
         }
+
     }
 }

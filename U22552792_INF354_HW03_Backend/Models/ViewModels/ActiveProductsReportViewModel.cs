@@ -4,13 +4,13 @@
     {
         public class ActiveProductsReportDTO
         {
-            public string ProductType { get; set; }
-            public List<BrandWithProductsDTO> Brands { get; set; }
+            public string Brand { get; set; }
+            public List<ProductTypeWithProductsDTO> ProductTypes { get; set; }
         }
 
-        public class BrandWithProductsDTO
+        public class ProductTypeWithProductsDTO
         {
-            public string Brand { get; set; }
+            public string ProductType { get; set; }
             public List<ProductDTO> Products { get; set; }
         }
 
