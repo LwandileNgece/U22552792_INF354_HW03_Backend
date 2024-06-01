@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using U22552792_INF354_HW03_Backend.Data;
-using U22552792_INF354_HW03_Backend.Models.Repositories;
 using U22552792_INF354_HW03_Backend.Models.IRepositories;
+using U22552792_INF354_HW03_Backend.Models.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +20,14 @@ builder.Services.AddScoped<IReportRepository, ReportRepository>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 var app = builder.Build();
+
+// Enable CORS
+app.UseCors(options =>
+{
+    options.WithOrigins("http://localhost:4200") // Update with your frontend domain
+           .AllowAnyHeader()
+           .AllowAnyMethod();
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

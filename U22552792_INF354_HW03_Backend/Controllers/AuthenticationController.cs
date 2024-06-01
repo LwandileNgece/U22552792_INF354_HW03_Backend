@@ -16,19 +16,19 @@ namespace U22552792_INF354_HW03_Backend.Controllers
             _authRepository = authRepository;
         }
 
-        [HttpPost("registerUser")]
-        public async Task<IActionResult> Register(User user)
-        {
-            try
+            [HttpPost("registerUser")]
+            public async Task<IActionResult> Register(User user)
             {
-                var registeredUser = await _authRepository.RegisterUserAsync(user.Email, user.Password);
-                return Ok(registeredUser);
+                try
+                {
+                    var registeredUser = await _authRepository.RegisterUserAsync(user.Email, user.Password);
+                    return Ok(registeredUser);
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, $"Internal server error: {ex.Message}");
+                }
             }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
-        }
         [HttpPost("loginUser")]
         public async Task<IActionResult> Login(User user)
         {
