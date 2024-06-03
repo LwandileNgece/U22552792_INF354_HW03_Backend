@@ -1,4 +1,6 @@
-﻿namespace U22552792_INF354_HW03_Backend.Models.IRepositories
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace U22552792_INF354_HW03_Backend.Models.IRepositories
 {
     public interface IStoreRepository
     {

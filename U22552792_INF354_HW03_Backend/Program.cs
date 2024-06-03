@@ -18,6 +18,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();
 builder.Services.AddScoped<IReportRepository, ReportRepository>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IStoreRepository, StoreRepository>(); // Add this line
 
 var app = builder.Build();
 
@@ -41,5 +42,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Add the route for your controller
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Store}/{action=AddProduct}/{id?}");
+
 
 app.Run();
