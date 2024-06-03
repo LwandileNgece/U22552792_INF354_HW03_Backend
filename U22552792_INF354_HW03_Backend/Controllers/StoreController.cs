@@ -80,7 +80,8 @@ namespace U22552792_INF354_HW03_Backend.Controllers
                         await file.CopyToAsync(stream);
                     }
                 }
-
+                //var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                var imageUrl = Path.Combine("images", file.FileName);
                 // Handle the rest of the product data
                 var product = new Product
                 {
@@ -89,7 +90,7 @@ namespace U22552792_INF354_HW03_Backend.Controllers
                     Description = productDto.Description,
                     BrandId = productDto.BrandId,
                     ProductTypeId = productDto.ProductTypeId,
-                    Image = file.FileName // Store the file path
+                    Image = imageUrl // Store the file path
                 };
 
                 try

@@ -23,6 +23,7 @@ builder.Services.AddScoped<IStoreRepository, StoreRepository>(); // Add this lin
 var app = builder.Build();
 
 // Enable CORS
+app.UseStaticFiles();
 app.UseCors(options =>
 {
     options.WithOrigins("http://localhost:4200") // Update with your frontend domain
